@@ -30,7 +30,7 @@
 
 # place project specific paths in variables to make the rest of the script more generic
 variables:
-  EXE_RELEASE_FOLDER: 'bin\Release'
+  EXE_RELEASE_FOLDER: 'bin\Release\'
   TEST_FOLDER: 'dotnetframework-test\bin\Release\'
   DEPLOY_FOLDER: 'C:\GitLab-Runner\Projects\YourApp\Builds'
   NUGET_PATH: 'C:\Tools\Nuget\nuget.exe'
