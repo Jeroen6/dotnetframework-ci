@@ -66,8 +66,24 @@ test_job:
   artifacts:
     when: always  # save test results even when the task fails
     expire_in: 1 week  # save gitlab server space, we copy the files we need to deploy folder later on
-    paths:
-      - '.\TestResult.xml'  # saving NUnit results to copy to deploy folder
+    #paths:
+     # - '.\TestResult.xml'  # saving NUnit results to copy to deploy folder
+  dependencies:
+    - build_job
+
+test2_job:
+  stage: test
+  tags: 
+    - windows
+  only:
+    - branches
+  script:
+    - '& "$env:MSTEST_PATH" "dotnetframework-test2\bin\Release\dotnetframework-test2.dll"'  # running mstest tests
+  artifacts:
+    when: always  # save test results even when the task fails
+    expire_in: 1 week  # save gitlab server space, we copy the files we need to deploy folder later on
+    #paths:
+#      - '.\TestResult.xml'  # saving NUnit results to copy to deploy folder
   dependencies:
     - build_job
 
