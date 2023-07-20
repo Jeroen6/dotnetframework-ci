@@ -36,7 +36,7 @@ variables:
   DEPLOY_FOLDER: 'P:\Projects\YourApp\Builds'
   NUGET_PATH: 'C:\Tools\Nuget\nuget.exe'
   MSBUILD_PATH: 'C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\msbuild.exe'
-  NUNIT_PATH: 'C:\Program Files (x86)\NUnit.org\nunit-console\nunit3-console.exe'
+  MSTEST_PATH: 'C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\TestPlatform\vstest.console.exe'
 
 stages:
   - build
@@ -66,7 +66,7 @@ test_job:
   only:
     - branches
   script:
-    - '& "$env:NUNIT_PATH" ".\$env:TEST_FOLDER\Tests.dll"'  # running NUnit tests
+    - '& "$env:MSTEST_PATH" ".\$env:TEST_FOLDER\Tests.dll"'  # running NUnit tests
   artifacts:
     when: always  # save test results even when the task fails
     expire_in: 1 week  # save gitlab server space, we copy the files we need to deploy folder later on
