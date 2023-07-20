@@ -53,7 +53,7 @@ build_job:
   artifacts:
     expire_in: 1 week  # save gitlab server space, we copy the files we need to deploy folder later on
     paths:
-      - '$env:bin\Release\dotnetframework-ci.exe'  # saving exe to copy to deploy folder
+      - '$env:\bin\Release\dotnetframework-ci.exe'  # saving exe to copy to deploy folder
       - '$env:TEST_FOLDER\'  # saving entire Test project so NUnit can run tests
 
 test_job:
