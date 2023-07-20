@@ -45,8 +45,10 @@ stages:
 
 build_job:
   stage: build
+  tags: 
+    - windows
   only:
-    - tags  # the build process will only be started by git tag commits
+    - branches
   script:
     - '& "$env:NUGET_PATH" restore'  # restore Nuget dependencies
     - '& "$env:MSBUILD_PATH" /p:Configuration=Release'  # build the project
@@ -59,8 +61,10 @@ build_job:
 
 test_job:
   stage: test
+  tags: 
+    - windows
   only:
-    - tags
+    - branches
   script:
     - '& "$env:NUNIT_PATH" ".\$env:TEST_FOLDER\Tests.dll"'  # running NUnit tests
   artifacts:
@@ -73,6 +77,8 @@ test_job:
 
 deploy_job:
   stage: deploy
+  tags: 
+    - windows
   only:
     - tags
   script:
