@@ -53,7 +53,6 @@ build_job:
     expire_in: 1 week  # save gitlab server space, we copy the files we need to deploy folder later on
     paths:
       - 'dotnetframework-ci\bin\Release\dotnetframework-ci.exe'  # saving exe to copy to deploy folder
-      - 'dotnetframework-test\bin\Release\dotnetframework-test.dll'  # saving entire Test project so mstest can run tests
 
 test_job:
   stage: test
@@ -61,6 +60,9 @@ test_job:
     - windows
   only:
     - branches
+  before_script:
+    - '& "$env:NUGET_PATH" restore'  # restore Nuget dependencies
+    - '& "$env:MSBUILD_PATH" /p:Configuration=Release'  # build the project
   script:
     - '& "$env:MSTEST_PATH" "dotnetframework-test\bin\Release\dotnetframework-test.dll"'  # running mstest tests
   artifacts:
@@ -77,6 +79,9 @@ test2_job:
     - windows
   only:
     - branches
+  before_script:
+    - '& "$env:NUGET_PATH" restore'  # restore Nuget dependencies
+    - '& "$env:MSBUILD_PATH" /p:Configuration=Release'  # build the project 
   script:
     - '& "$env:MSTEST_PATH" "dotnetframework-test2\bin\Release\dotnetframework-test2.dll"'  # running mstest tests
   artifacts:
