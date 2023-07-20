@@ -18,5 +18,18 @@ namespace dotnetframework_test
         {
             throw new NotImplementedException("Please create a test first.");
         }
+
+        [TestMethod]
+        public void TestMethod3()
+        {
+            return;
+        }
+
+        [Ignore]
+        [TestMethod]
+        public void TestMethod4()
+        {
+
+        }
     }
 }
