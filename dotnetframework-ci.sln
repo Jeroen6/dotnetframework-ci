@@ -3,9 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnetframework-ci", "dotnetframework-ci.csproj", "{087804EC-507C-409E-B07A-EAA6BA1B4D98}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnetframework-test", "dotnetframework-test\dotnetframework-test.csproj", "{94E77015-73EC-4178-9B2C-E0AFB2FCBDF5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{087804EC-507C-409E-B07A-EAA6BA1B4D98} = {087804EC-507C-409E-B07A-EAA6BA1B4D98}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnetframework-ci", "dotnetframework-ci\dotnetframework-ci.csproj", "{087804EC-507C-409E-B07A-EAA6BA1B4D98}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9986B847-F153-4312-9AC6-547B7D629BA7}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		.gitlab-ci.yml = .gitlab-ci.yml
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +23,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{087804EC-507C-409E-B07A-EAA6BA1B4D98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{087804EC-507C-409E-B07A-EAA6BA1B4D98}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{087804EC-507C-409E-B07A-EAA6BA1B4D98}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{087804EC-507C-409E-B07A-EAA6BA1B4D98}.Release|Any CPU.Build.0 = Release|Any CPU
 		{94E77015-73EC-4178-9B2C-E0AFB2FCBDF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{94E77015-73EC-4178-9B2C-E0AFB2FCBDF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94E77015-73EC-4178-9B2C-E0AFB2FCBDF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94E77015-73EC-4178-9B2C-E0AFB2FCBDF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{087804EC-507C-409E-B07A-EAA6BA1B4D98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{087804EC-507C-409E-B07A-EAA6BA1B4D98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{087804EC-507C-409E-B07A-EAA6BA1B4D98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{087804EC-507C-409E-B07A-EAA6BA1B4D98}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

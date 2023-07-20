@@ -52,7 +52,7 @@ build_job:
   artifacts:
     expire_in: 1 week  # save gitlab server space, we copy the files we need to deploy folder later on
     paths:
-      - 'bin\Release\dotnetframework-ci.exe'  # saving exe to copy to deploy folder
+      - 'dotnetframework-ci\bin\Release\dotnetframework-ci.exe'  # saving exe to copy to deploy folder
       - 'dotnetframework-test\bin\Release\dotnetframework-test.dll'  # saving entire Test project so NUnit can run tests
 
 test_job:
@@ -86,7 +86,7 @@ deploy_job:
     - '$deployFolder = $($env:DEPLOY_FOLDER) + "\" + $($env:CI_COMMIT_TAG) + " - " + $commitSubject + "\"'
 
     # xcopy takes care of recursively creating required folders
-    - 'xcopy /y ".\$env:bin\Release\dotnetframework-ci.exe" "$deployFolder"'
+    - 'xcopy /y ".\dotnetframework-ci\bin\Release\dotnetframework-ci.exe" "$deployFolder"'
     - 'xcopy /y ".\TestResult.xml" "$deployFolder"'
   dependencies:
     - build_job
