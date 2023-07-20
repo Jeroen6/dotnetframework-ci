@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Runtime.Remoting.Messaging;
 
 namespace dotnetframework_test
 {
@@ -9,6 +10,13 @@ namespace dotnetframework_test
         [TestMethod]
         public void TestMethod1()
         {
+            Assert.Fail();
+        }
+
+        [TestMethod]
+        public void TestMethod2()
+        {
+            throw new NotImplementedException("Please create a test first.");
         }
     }
 }
