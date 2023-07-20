@@ -30,7 +30,6 @@
 
 # place project specific paths in variables to make the rest of the script more generic
 variables:
-  TEST_FOLDER: 'dotnetframework-test\bin\Release'
   DEPLOY_FOLDER: 'C:\GitLab-Runner\Projects\YourApp\Builds'
   NUGET_PATH: 'C:\Tools\Nuget\nuget.exe'
   MSBUILD_PATH: 'C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\msbuild.exe'
@@ -63,7 +62,7 @@ test_job:
   only:
     - branches
   script:
-    - '& "$env:MSTEST_PATH" ".\$env:TEST_FOLDER\dotnetframework-test.dll"'  # running mstest tests
+    - '& "$env:MSTEST_PATH" "dotnetframework-test\bin\Release\dotnetframework-test.dll"'  # running mstest tests
   artifacts:
     when: always  # save test results even when the task fails
     expire_in: 1 week  # save gitlab server space, we copy the files we need to deploy folder later on
