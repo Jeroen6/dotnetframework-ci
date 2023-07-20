@@ -88,7 +88,7 @@ deploy_job:
 
     # xcopy takes care of recursively creating required folders
     - 'xcopy /y ".\dotnetframework-ci\bin\Release\dotnetframework-ci.exe" "$deployFolder"'
-    - 'xcopy /y ".\TestResult.xml" "$deployFolder"'
+    #- 'xcopy /y ".\TestResult.xml" "$deployFolder"'
   dependencies:
     - build_job
     - test_job
