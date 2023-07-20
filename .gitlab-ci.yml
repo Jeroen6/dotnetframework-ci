@@ -34,8 +34,8 @@ variables:
   MSI_RELEASE_FOLDER: 'Setup\bin\Release'
   TEST_FOLDER: 'Tests\bin\Release'
   DEPLOY_FOLDER: 'P:\Projects\YourApp\Builds'
-  NUGET_PATH: 'C:\NuGet\nuget.exe'
-  MSBUILD_PATH: 'C:\Program Files (x86)\MSBuild\14.0\Bin\msbuild.exe'
+  NUGET_PATH: 'C:\Tools\Nuget\nuget.exe'
+  MSBUILD_PATH: 'C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\msbuild.exe'
   NUNIT_PATH: 'C:\Program Files (x86)\NUnit.org\nunit-console\nunit3-console.exe'
 
 stages:
