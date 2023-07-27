@@ -1,0 +1,49 @@
+# This is an example Starter pipeline configuration
+# Use a skeleton to build, test and deploy using manual and parallel steps
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+
+pipelines:
+  default:
+    - parallel:
+      - step:
+          name: 'Build and Test'
+          runs-on: 
+            - 'self.hosted'
+            - 'windows'
+          script:
+            - '& C:\Tools\Nuget\nuget.exe restore'  # restore Nuget dependencies
+            - '& "C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\msbuild.exe" /p:Configuration=Release'
+      - step:
+          name: 'Lint'
+          runs-on: 
+            - 'self.hosted'
+            - 'windows'
+          script:
+            - echo "Your linting goes here..."
+      - step:
+          name: 'Security scan'
+          runs-on: 
+            - 'self.hosted'
+            - 'windows'
+          script:
+            - echo "Your security scan goes here..."
+
+    # The following deployment steps will be executed for each pipeline run. To configure your steps and conditionally deploy see https://support.atlassian.com/bitbucket-cloud/docs/configure-bitbucket-pipelinesyml/
+    - step:
+        name: 'Deployment to Staging'
+        runs-on: 
+            - 'self.hosted'
+            - 'windows'
+        deployment: staging
+        script:
+          - echo "Your deployment to staging script goes here..."
+    - step:
+        name: 'Deployment to Production'
+        runs-on: 
+            - 'self.hosted'
+            - 'windows'
+        deployment: production
+        trigger: 'manual'
+        script:
+          - echo "Your deployment to production script goes here..."
