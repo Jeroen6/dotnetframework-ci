@@ -3,32 +3,45 @@
 # -----
 # You can specify a custom docker image from Docker Hub as your build environment.
 
-image: atlassian/default-image:3
-
 pipelines:
   default:
     - parallel:
       - step:
           name: 'Build and Test'
+          runs-on: 
+            - 'self.hosted'
+            - 'windows'
           script:
             - echo "Your build and test goes here..."
       - step:
           name: 'Lint'
+          runs-on: 
+            - 'self.hosted'
+            - 'windows'
           script:
             - echo "Your linting goes here..."
       - step:
           name: 'Security scan'
+          runs-on: 
+            - 'self.hosted'
+            - 'windows'
           script:
             - echo "Your security scan goes here..."
 
     # The following deployment steps will be executed for each pipeline run. To configure your steps and conditionally deploy see https://support.atlassian.com/bitbucket-cloud/docs/configure-bitbucket-pipelinesyml/
     - step:
         name: 'Deployment to Staging'
+        runs-on: 
+            - 'self.hosted'
+            - 'windows'
         deployment: staging
         script:
           - echo "Your deployment to staging script goes here..."
     - step:
         name: 'Deployment to Production'
+        runs-on: 
+            - 'self.hosted'
+            - 'windows'
         deployment: production
         trigger: 'manual'
         script:
