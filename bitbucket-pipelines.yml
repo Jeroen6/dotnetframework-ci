@@ -12,7 +12,8 @@ pipelines:
             - 'self.hosted'
             - 'windows'
           script:
-            - echo "Your build and test goes here..."
+            - '& C:\Tools\Nuget\nuget.exe restore'  # restore Nuget dependencies
+            - '& "C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\msbuild.exe" /p:Configuration=Release'
       - step:
           name: 'Lint'
           runs-on: 
